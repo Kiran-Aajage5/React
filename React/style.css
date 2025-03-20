@@ -24,20 +24,61 @@
 
    
 }
-.Restaurentcard{
+/* .Restaurentcard{
     width: 200px;
     /* height: 450px; */
-    border: 1px solid blueviolet;
+    /* border: 1px solid blueviolet;
     background-color: bisque;
     padding: 5px;
-    cursor: pointer;
+    cursor: pointer; */
+    
 
+ /* }  */
+
+ .Restaurentcard {
+    width: 250px; /* Adjust width for better layout */
+    border: 1px solid blueviolet;
+    background-color: bisque;
+    padding: 10px; /* Increased padding for better spacing */
+    margin: 10px; /* Adds spacing between cards */
+    border-radius: 10px; /* Smooth corners */
+    display: flex;
+    flex-direction: column;
+    /* align-items: center;
+    text-align: center; Center text */
+    align-items: flex-start;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1); /* Add slight shadow */
+    transition: transform 0.2s ease-in-out;
+    overflow: hidden;
 }
+
+
 .Restaurentcard:hover{
     /* cursor: pointer !important; */
     border: 2px solid blueviolet;
     
 }
+
+
+.restaurant-info {
+    /* padding-top: 10px; */
+    width: 100%;
+    word-wrap: break-word; /* Ensures long words break */
+    overflow-wrap: break-word;
+}
+
+.restaurant-cuisine {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 5px;
+    white-space: nowrap; /* Prevents text from wrapping */
+    overflow: hidden;
+    text-overflow: ellipsis; /* Adds '...' if text is too long */
+    max-width: 100%; /* Prevents it from overflowing the container */
+}
+
+
+
 
 .search{
     padding: 20px;
@@ -52,10 +93,45 @@
     flex-wrap: wrap;
     /* margin: 5px; */
     /* justify-content: space-around; */
+    justify-content: space-evenly; /* Ensures proper spacing */
+    padding: 20px;
 
 }
 
 .filter-btn{
     margin: 10px;
     cursor: pointer;
+}
+
+
+/* Shimmer Ui */
+
+.shimmer-container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly; /* Ensures proper spacing */
+    padding: 20px;
+
+}
+
+.shimmer-card{
+    margin: 10px;
+    width: 250px;
+    height: 500px;
+    background-color: #f0f0f0;
+}
+
+.login{
+    padding: 0 20px;
+    cursor: pointer;
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 15px;
+}
+
+
+.filter{
+    display: flex;
+    padding: 5px;
+    align-items: center;
+    margin-top: 15px; /* Add space from the header */
 }

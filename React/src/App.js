@@ -2059,7 +2059,7 @@ const resList = [
 
 
 const AppLayout = () => {
-  console.log(<Body></Body>)
+  // console.log(<Body></Body>)
   return (
     <div className="App">
       <Header/> 

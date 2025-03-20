@@ -1,0 +1,30 @@
+{
+  "name": "react",
+  "version": "1.0.0",
+  "description": "This is React by Kiran Aajage",
+  
+  "scripts": {
+    "start":"parcel React/index.html",
+    "build":"parcel build React/index.html",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "(https://github.com/Kiran-Aajage5/React.git)"
+  },
+  "keywords": [],
+  "author": "Kiran Aajage",
+  "license": "ISC",
+  "devDependencies": {
+    "parcel": "^2.13.3",
+    "process": "^0.11.10"
+  },
+  "dependencies": {
+    "node-libs-browser": "^2.2.1",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "browserlist":[
+    "last 2 versions"
+  ]
+}
