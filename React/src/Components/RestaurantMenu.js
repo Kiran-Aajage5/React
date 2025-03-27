@@ -7,10 +7,7 @@ const RestaurantMenu = () => {
     // origin vido
     const [resInfo, setResInfo] = useState(null);
 
-    // vido 2
-    // Show dynamically data
-    // const [resInfo, setResInfo] = useState(null);
-
+    
     // old vido
     const {resId} = useParams();
     // const params = useParams();
@@ -18,16 +15,16 @@ const RestaurantMenu = () => {
     // const params = useParams();
 
     
-    // orgi vido
+    // orgi 
     useEffect(() => {
         fetchMenu();
     }, []);
 
    
-    // orgin vido
+    // orgin 
 
     const fetchMenu = async () => {
-        const data = await fetch ( "https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=12.9352403&lng=77.624532&restaurantId=10582&catalog_qa=undefined&submitAction=ENTER");
+        const data = await fetch ( "https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=12.9352403&lng=77.624532&restaurantId=" +resId);
         
         const json = await data.json();
         console.log(json);
@@ -39,45 +36,14 @@ const RestaurantMenu = () => {
 
 
 
- // vido 2
  
-    //     useEffect (() => {
-    //         const fetchRestaurantMenu = async () => {
-    //             try {
-    //                 const response = await fetch(MENU_API);
-    //                 const json = await response.json();
-    //                 console.log(json?.data?.cards?.find((item)=> 
-    //                     item?.card.card["@type"]?.includes(
-    //                         "food.v2.Restaurant"
-    //                     )
-    //                 ));
-    //             } catch (error) {
-                    
-    //             }
-    //         };
-
-    //         fetchRestaurantMenu()
-    //     }, []
-    // );
 
 
 
     // Shimmer UI
     if (resInfo === null) return <Shimmer/>
 
-    // vido 2
-    // console.log(resInfo);
     
-    
-
-    // return(
-    //     <div>
-    //         <div>
-    //         <h1> {resId} </h1>
-    //         </div>
-            
-    //     </div>
-    // );
 
     const { name,cuisines,costForTwoMessage } = resInfo?.cards?.[2]?.card?.card.info;
     
