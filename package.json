@@ -2,10 +2,9 @@
   "name": "react",
   "version": "1.0.0",
   "description": "This is React by Kiran Aajage",
-  
   "scripts": {
-    "start":"parcel React/index.html",
-    "build":"parcel build React/index.html",
+    "start": "parcel React/index.html",
+    "build": "parcel build React/index.html",
     "test": "jest"
   },
   "repository": {
@@ -22,9 +21,10 @@
   "dependencies": {
     "node-libs-browser": "^2.2.1",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "react-router-dom": "^6.14.2"
   },
-  "browserlist":[
+  "browserlist": [
     "last 2 versions"
   ]
 }
