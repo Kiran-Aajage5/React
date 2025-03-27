@@ -43,7 +43,10 @@ const RestaurantMenu = () => {
     // Shimmer UI
     if (resInfo === null) return <Shimmer/>
 
-    
+    // if restaurant id is wrong then this value will be null and in that case you can not use destructure , so just put one validation like this!!!!
+    if(!resInfo?.cards?.[2]?.card?.card.info){
+        return;
+    }
 
     const { name,cuisines,costForTwoMessage } = resInfo?.cards?.[2]?.card?.card.info;
     
