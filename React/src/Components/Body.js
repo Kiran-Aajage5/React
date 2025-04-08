@@ -6,6 +6,7 @@ import resList from "../utils/mockData";
 // shimmer Ui
 import Shimmer from "./Shimmer";
 
+import { Link } from "react-router-dom";
 
 
 
@@ -246,7 +247,8 @@ const  fetchData = async() => {
     
           {
             //  listOfRestaurants.map((restaurant) => (<Restaurentcard key={restaurant.info.id} resData={restaurant} />))
-            filteredRestaurant.map((restaurant) => (<Restaurentcard key={restaurant.info.id} resData={restaurant} />))
+            filteredRestaurant.map((restaurant) => 
+              (<Link  key={restaurant.info.id} to={"restaurants/"+ restaurant.info.id}><Restaurentcard resData={restaurant} /></Link>))
           }
           
           {/* <Restaurentcard resName="KFC" cuisine="Burger"/> */}
