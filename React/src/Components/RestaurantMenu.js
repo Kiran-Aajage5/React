@@ -1,12 +1,13 @@
-import{useState, useEffect } from "react";
+// import{useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
 import { useParams } from "react-router-dom";
-import { MENU_API } from "../utils/constants";
+// import { MENU_API } from "../utils/constants";
+import useRestaurantMenu from  "../utils/useRestaurantMenu";
 
 const RestaurantMenu = () => {
 
     // origin vido
-    const [resInfo, setResInfo] = useState(null);
+    // const [resInfo, setResInfo] = useState(null);
 
     
     // old vido
@@ -15,25 +16,27 @@ const RestaurantMenu = () => {
     // console.log(params);
     // const params = useParams();
 
+    const resInfo = useRestaurantMenu(resId);
+
     
     // orgi 
-    useEffect(() => {
-        fetchMenu();
-    }, []);
+    // useEffect(() => {
+    //     fetchMenu();
+    // }, []);
 
    
     // orgin 
 
-    const fetchMenu = async () => {
-        const data = await fetch ( MENU_API + resId);
+    // const fetchMenu = async () => {
+    //     const data = await fetch ( MENU_API + resId);
         
-        const json = await data.json();
-        console.log(json);
-        setResInfo(json.data);
+    //     const json = await data.json();
+    //     console.log(json);
+    //     setResInfo(json.data);
 
 
         
-    };
+    // };
 
 
 
@@ -88,7 +91,7 @@ const RestaurantMenu = () => {
 
             <ul>
 
-                {itemCards.map((item) => (
+                {itemCards?.map((item) => (
                     <li key={item.card.info.id}>
                         {item.card.info.name} - {"Rs"}
                         {item.card.info.price/100 || item.card.info.defaultPrice/100}
@@ -99,8 +102,8 @@ const RestaurantMenu = () => {
                 }
 
 
-                <li>{itemCards[0].card.info.name}</li>
-               <li>{itemCards[2].card.info.name}</li>
+                <li>{itemCards && itemCards[0].card.info.name}</li>
+               <li>{itemCards && itemCards[2].card.info.name}</li>
             </ul>
 
             
