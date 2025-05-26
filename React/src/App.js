@@ -1,4 +1,4 @@
-import React, {lazy, Suspense} from "react";
+import React, {lazy, Suspense, useEffect, useState} from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import Header from "./Components/Header";
@@ -7,6 +7,7 @@ import Body from "./Components/Body";
 import Contact from "./Components/Contact";
 import Error from "./Components/Error";
 import RestaurantMenu from "./Components/RestaurantMenu";
+import UserContext from "./utils/UserContext";
 // import "../../React/style.css";
 // import Grocery from "./Components/Grocery";
 
@@ -2075,8 +2076,23 @@ const About = lazy(()=> import ("./Components/About") );
 
 const AppLayout = () => {
   // console.log(<Body></Body>)
+
+  //authentication
+
+  const [userName, setUserName] = useState();
+
+  //authentication 1
+  useEffect(()=>{
+    //Make ApI call and send username and password
+    const data = {
+      name:"Kiran"
+    };
+    setUserName(data.name);
+  }, [])
   return (
-    <div className="App">
+    // Default value
+    <UserContext.Provider value = {{loggedInUser : userName,setUserName}}>
+    <div className="App"> 
       <Header/> 
       <Outlet/>
       {/** if path = /  */}
@@ -2087,7 +2103,8 @@ const AppLayout = () => {
       {/* <Contact/> */}
 
     </div>
-  )
+    </UserContext.Provider>
+  );
 
 
 };

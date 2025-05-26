@@ -39,11 +39,11 @@ class UserClass extends React.Component{
        
     }
     componentDidUpdate() {
-        console.log("componentDidUpdate");
+        // console.log("componentDidUpdate");
     }
 
     componentWillUnmount(){
-        console.log("component will unmount");
+        // console.log("component will unmount");
     }
 
     render(){

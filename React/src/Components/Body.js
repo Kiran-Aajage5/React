@@ -1,6 +1,6 @@
 import Restaurentcard ,{withPromtedLabel} from "./RestaurantCard";
 // import resList from "../utils/mockData";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 // to import mock data
 import resList from "../utils/mockData";
 // shimmer Ui
@@ -9,6 +9,7 @@ import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 //online/offline status
 import useOnlineStatus from "../utils/useOnlineStatus";
+import UserContext from "../utils/UserContext";
 
 
  
@@ -99,7 +100,7 @@ const Body = () => {
   // Search bar
   const [searchText, setsearchText] = useState("");
   // Whenever state variable update, react triggers  a reconciliation cycle (rerender the component)
-  console.log("Body Rendered",listOfRestaurants);
+  // console.log("Body Rendered",listOfRestaurants);
   // useeffect
  useEffect (()=> {
   fetchData();
@@ -212,6 +213,9 @@ if (OnlineStatus === false ) return (<h1> Looks like you are offline, please che
   //     },
   // ];
   
+  //context
+
+  const {loggedInUser,setUserName} = useContext(UserContext); 
 
 
     // return listOfRestaurants.length === 0 ? <Shimmer/> :(
@@ -253,6 +257,16 @@ if (OnlineStatus === false ) return (<h1> Looks like you are offline, please che
             // setlistofRestaurants(filteredList);
 
           }}>Top Rated Restaurants </button>
+
+          
+          {/*  input box */}
+          <label>UserName</label>
+
+          <input className="border border-black p-1 m-4 rounded-2xl"
+          value={loggedInUser}
+          onChange={(e) => setUserName (e.target.value)} />
+
+
           </div>
           
           

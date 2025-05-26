@@ -3,6 +3,8 @@ import Shimmer from "./Shimmer";
 import { useParams } from "react-router-dom";
 // import { MENU_API } from "../utils/constants";
 import useRestaurantMenu from  "../utils/useRestaurantMenu";
+import RestaurantCategory from "./RestaurantCategory";
+import { useState } from "react";
 
 const RestaurantMenu = () => {
 
@@ -15,8 +17,11 @@ const RestaurantMenu = () => {
     // const params = useParams();
     // console.log(params);
     // const params = useParams();
+    const dummy = "Dummy data";
 
     const resInfo = useRestaurantMenu(resId);
+
+    const [showIndex,setShowIndex] = useState(0);
 
     
     // orgi 
@@ -56,11 +61,20 @@ const RestaurantMenu = () => {
     
     // const {itemCards} = resInfo?. cards
     // Destructure itemCards from the correct path
-    // const itemCards = resInfo?.cards?.[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards?.[1]?.card?.card?.itemCards;
+    const itemCards = resInfo?.cards?.[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards?.[1]?.card?.card?.itemCards;
     // console.log(itemCards);
+        // console.log(resInfo?.cards?.[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards);
+    
+   // find categories
+   
+   const categories = resInfo?.cards?.[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter((c) => 
+    c.card?.["card"]?.["@type"]===
+    "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory");
+    // console.log(categories);
 
-    const {itemCards} = resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card;
-    console.log(itemCards);
+
+    
+
 
 
     // return (  
@@ -85,11 +99,11 @@ const RestaurantMenu = () => {
 
 
     return (  
-        <div className="menu">
-            <h1>{name}</h1>
-            <p>{cuisines.join(",")} - {costForTwoMessage}</p>
+        <div className="menu text-center" >
+            <h1 className="font-bold my-5 text-2xl">{name}</h1>
+            <p className="font-bold text-lg">{cuisines.join(",")} - {costForTwoMessage}</p>
 
-            <ul>
+            {/* <ul>
 
                 {itemCards?.map((item) => (
                     <li key={item.card.info.id}>
@@ -104,9 +118,15 @@ const RestaurantMenu = () => {
 
                 <li>{itemCards && itemCards[0].card.info.name}</li>
                <li>{itemCards && itemCards[2].card.info.name}</li>
-            </ul>
+            </ul> */}
 
-            
+            {/* Categories Aaccordion */}
+            {/* Controled Component */}
+            {categories.map((category, index) =>(<RestaurantCategory key={category.card.card.title}  data={category?.card?.card} 
+            showItems={index === showIndex ? true : false}
+            setShowIndex={() => setShowIndex (index)}
+            dummy = {dummy}
+            />) )}
             
         </div>
     );

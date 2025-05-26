@@ -1,4 +1,6 @@
+import { useContext } from "react";
 import { CDN_URL } from "../utils/constants";
+import UserContext from "../utils/UserContext";
 
 // Restaurent card component
 
@@ -9,6 +11,9 @@ import { CDN_URL } from "../utils/constants";
 
 const Restaurentcard = (props) => {
     const {resData}= props;
+
+    // React context
+    const {loggedInUser} =  useContext(UserContext);
   
     // optional chaining
     const {
@@ -41,6 +46,8 @@ const Restaurentcard = (props) => {
         <h4>{avgRating} Stars</h4>
         <h4>{costForTwo}</h4>
         <h4>{deliveryTime} Mins</h4>
+         <h4>User: {loggedInUser}</h4>
+
       </div>
     );
   };
