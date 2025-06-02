@@ -3,6 +3,7 @@ import { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import UserContext from "../utils/UserContext";
+import { useSelector } from "react-redux";
 
 // Header component
 const Header = () => {
@@ -18,13 +19,18 @@ const Header = () => {
   // CONTEXT
 
 const {loggedInUser} = useContext(UserContext);
-console.log(loggedInUser);
+//console.log(loggedInUser);
 
   //  if No dependency array => useEffect is called on every component render
   // if dependency array is empty = [] => useEffect is called on intial render (just once)
   useEffect(()=> {
     console.log("useEffect called")
   }, [btnNameReact]);
+
+  // Subscribing to store using Selector
+
+   const cartItems = useSelector((store) => store.cart.items);
+   console.log(cartItems);
     return (
       <div className="flex justify-between bg-pink-100 drop-shadow-lg m-2 sm:bg-blue-100 lg:bg-fuchsia-200">
         <div className="logo-container">
@@ -50,7 +56,14 @@ console.log(loggedInUser);
               <li className="px-4 font-bold">
              <Link to="/grocery">Grocery</Link>
               </li>
-            <li className="px-4 font-bold">Cart</li>
+
+              <li className="px-4 font-bold text-xl">
+               <Link to="/cart">Cart  ({cartItems.length} items)</Link>
+              </li>
+              
+             
+            {/* <li className="px-4 font-bold text-xl">Cart  ({cartItems.length} items)</li> */}
+          
             {/* <button className="login" onClick={()=> {setbtnNameReact  ("Logout") ;
               // console.log(btnNameReact);
             }}>{btnNameReact}</button> */}

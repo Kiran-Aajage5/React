@@ -301,3 +301,12 @@
       <Restaurentcard resData = {resList[17]} />
       <Restaurentcard resData = {resList[18]} />
       <Restaurentcard resData = {resList[19]} /> */} -->
+
+
+# Readux Toolkit
+- Installing @reduxjs/toolkit and react-redux
+- Build our store
+- Connect our store to our app
+- Slice (Cartslice)
+- Dispatch(action)
+- Selector
